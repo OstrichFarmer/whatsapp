@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/pages/chat_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
@@ -34,30 +35,36 @@ class _MyHomePageState extends State<MyHomePage>
             icon: const Icon(Icons.search),
             color: Colors.white,
           ),
-          PopupMenuButton<String>(itemBuilder: (BuildContext context) {
-            return [
-              PopupMenuItem(
-                child: Text("New group"),
-                value: "New group",
-              ),
-              PopupMenuItem(
-                child: Text("New broadcast"),
-                value: "New broadcast",
-              ),
-              PopupMenuItem(
-                child: Text("Whatsapp web"),
-                value: "Whatsapp web",
-              ),
-              PopupMenuItem(
-                child: Text("Starred message"),
-                value: "Starred message",
-              ),
-              PopupMenuItem(
-                child: Text("Settings "),
-                value: "Settings",
-              ),
-            ];
-          })
+          PopupMenuButton<String>(
+            color: Colors.white,
+            onSelected: (value) {
+              print(value);
+            },
+            itemBuilder: (BuildContext context) {
+              return const [
+                PopupMenuItem(
+                  value: "New group",
+                  child: Text("New group"),
+                ),
+                PopupMenuItem(
+                  value: "New broadcast",
+                  child: Text("New broadcast"),
+                ),
+                PopupMenuItem(
+                  value: "Whatsapp web",
+                  child: Text("Whatsapp web"),
+                ),
+                PopupMenuItem(
+                  value: "Starred message",
+                  child: Text("Starred message"),
+                ),
+                PopupMenuItem(
+                  value: "Settings",
+                  child: Text("Settings "),
+                ),
+              ];
+            },
+          )
         ],
         bottom: TabBar(controller: _controller, tabs: const [
           Tab(
@@ -90,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage>
         controller: _controller,
         children: const [
           Text("CAMERA"),
-          Text("CHATS"),
+          ChatPage(),
           Text("STATUS"),
           Text("CALLS"),
         ],
