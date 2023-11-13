@@ -13,7 +13,9 @@ class CustomCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const IndividualChatScreen(),
+            builder: (context) => IndividualChatScreen(
+              chatModel: chatModel,
+            ),
           ),
         );
       },
