@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/models/chat_model.dart';
 
 class CustomCard extends StatelessWidget {
-  CustomCard({super.key, required this.chatModel});
-  ChatModel chatModel;
+  const CustomCard({super.key, required this.chatModel});
+  final ChatModel chatModel;
 
   @override
   Widget build(BuildContext context) {
