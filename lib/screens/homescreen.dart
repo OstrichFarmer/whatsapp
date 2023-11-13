@@ -66,32 +66,35 @@ class _MyHomePageState extends State<MyHomePage>
             },
           )
         ],
-        bottom: TabBar(controller: _controller, tabs: const [
-          Tab(
-            icon: Icon(
-              Icons.camera_alt,
-              color: Colors.white,
-            ),
-          ),
-          Tab(
-            child: Text(
-              "Chats",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          Tab(
-            child: Text(
-              "Status",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          Tab(
-            child: Text(
-              "Calls",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ]),
+        bottom: TabBar(
+            indicatorColor: Colors.white,
+            controller: _controller,
+            tabs: const [
+              Tab(
+                icon: Icon(
+                  Icons.camera_alt,
+                  color: Colors.white,
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Chats",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Status",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Calls",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ]),
       ),
       body: TabBarView(
         controller: _controller,
