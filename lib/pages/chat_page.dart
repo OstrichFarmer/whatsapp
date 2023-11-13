@@ -18,9 +18,9 @@ class _ChatPageState extends State<ChatPage> {
         time: "12:34PM",
         icon: Icons.person),
     ChatModel(
-        name: "joh Doe",
-        isGroup: false,
-        currentMessage: "Are you there?",
+        name: "joh Doe and Friends",
+        isGroup: true,
+        currentMessage: "Are you there guys?",
         time: "7:34PM",
         icon: Icons.person),
     ChatModel(
@@ -45,11 +45,11 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: const [
-          CustomCard(),
-          CustomCard(),
-        ],
+      body: ListView.builder(
+        itemCount: chats.length,
+        itemBuilder: (context, index) => CustomCard(
+          chatModel: chats[index],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
