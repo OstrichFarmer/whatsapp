@@ -37,9 +37,7 @@ class _MyHomePageState extends State<MyHomePage>
           ),
           PopupMenuButton<String>(
             color: Colors.white,
-            onSelected: (value) {
-              print(value);
-            },
+            onSelected: (value) {},
             itemBuilder: (BuildContext context) {
               return const [
                 PopupMenuItem(
