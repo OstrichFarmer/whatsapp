@@ -15,6 +15,7 @@ class _ChatPageState extends State<ChatPage> {
       body: ListView(
         children: const [
           CustomCard(),
+          CustomCard(),
         ],
       ),
       floatingActionButton: FloatingActionButton(
