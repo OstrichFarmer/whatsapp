@@ -135,6 +135,7 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
                           const EdgeInsets.only(left: 3, right: 3, bottom: 8),
                       width: MediaQuery.of(context).size.width - 55,
                       child: Card(
+                        color: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25)),
                         child: TextFormField(
@@ -163,7 +164,17 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
                               )),
                         ),
                       )),
-                  const CircleAvatar(),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: CircleAvatar(
+                      backgroundColor: Theme.of(context).primaryColor,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.mic),
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             )
