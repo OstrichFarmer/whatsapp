@@ -12,6 +12,7 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         leadingWidth: 80,
@@ -118,6 +119,56 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
             },
           )
         ],
+      ),
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Stack(
+          children: [
+            ListView(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                children: [
+                  Container(
+                      margin:
+                          const EdgeInsets.only(left: 3, right: 3, bottom: 8),
+                      width: MediaQuery.of(context).size.width - 55,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25)),
+                        child: TextFormField(
+                          textAlignVertical: TextAlignVertical.center,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: 10,
+                          minLines: 1,
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Type here ",
+                              contentPadding: const EdgeInsets.all(5),
+                              prefixIcon: IconButton(
+                                icon: const Icon(Icons.emoji_emotions_outlined),
+                                onPressed: () {},
+                              ),
+                              suffixIcon: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(Icons.attach_file)),
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(Icons.camera_alt)),
+                                ],
+                              )),
+                        ),
+                      )),
+                  const CircleAvatar(),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
