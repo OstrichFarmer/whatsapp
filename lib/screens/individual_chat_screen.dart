@@ -175,8 +175,9 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
                                       hintText: "Type here ",
                                       contentPadding: const EdgeInsets.all(5),
                                       prefixIcon: IconButton(
-                                        icon: const Icon(
-                                            Icons.emoji_emotions_outlined),
+                                        icon: Icon(showEmoji
+                                            ? Icons.keyboard
+                                            : Icons.emoji_emotions_outlined),
                                         onPressed: () {
                                           FocusScope.of(context).unfocus();
                                           setState(() {
@@ -188,13 +189,27 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           IconButton(
-                                              onPressed: () {},
-                                              icon: const Icon(
-                                                  Icons.attach_file)),
+                                            onPressed: () {
+                                              showModalBottomSheet(
+                                                barrierColor:
+                                                    Colors.transparent,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                context: context,
+                                                builder: (builder) =>
+                                                    attachFileSheet(),
+                                              );
+                                            },
+                                            icon: const Icon(
+                                              Icons.attach_file,
+                                            ),
+                                          ),
                                           IconButton(
-                                              onPressed: () {},
-                                              icon:
-                                                  const Icon(Icons.camera_alt)),
+                                            onPressed: () {},
+                                            icon: const Icon(
+                                              Icons.camera_alt,
+                                            ),
+                                          ),
                                         ],
                                       )),
                                 ),
@@ -225,6 +240,16 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget attachFileSheet() {
+    return Container(
+      height: 300,
+      width: double.infinity,
+      child: const Card(
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       ),
     );
   }
