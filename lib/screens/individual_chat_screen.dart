@@ -245,11 +245,71 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
   }
 
   Widget attachFileSheet() {
-    return Container(
-      height: 300,
+    return SizedBox(
+      height: 270,
       width: double.infinity,
-      child: const Card(
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      child: Card(
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                iconWidget(
+                    ontap: () {},
+                    icon: Icons.insert_drive_file,
+                    color: Colors.indigo,
+                    title: "Documents"),
+                iconWidget(
+                    icon: Icons.camera_alt,
+                    color: Colors.pink,
+                    title: "Camera"),
+                iconWidget(
+                    icon: Icons.insert_photo,
+                    color: Colors.purple,
+                    title: "Gallery"),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                iconWidget(
+                    icon: Icons.headset, color: Colors.orange, title: "Audio"),
+                iconWidget(
+                    icon: Icons.location_pin,
+                    color: Colors.green,
+                    title: "Location"),
+                iconWidget(
+                    icon: Icons.person, color: Colors.blue, title: "Contacts"),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget iconWidget(
+      {required IconData icon,
+      required Color color,
+      required String title,
+      Function()? ontap}) {
+    return InkWell(
+      onTap: ontap,
+      child: Column(
+        children: [
+          CircleAvatar(
+            backgroundColor: color,
+            radius: 30,
+            child: Icon(
+              color: Colors.white,
+              icon,
+              size: 27,
+            ),
+          ),
+          Text(title)
+        ],
       ),
     );
   }
