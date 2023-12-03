@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/custom_ui/contact_card.dart';
 
 class SelectContactScreen extends StatefulWidget {
   const SelectContactScreen({super.key});
@@ -60,6 +61,7 @@ class _SelectContactScreenState extends State<SelectContactScreen> {
           ),
         ],
       ),
+      body: ListView(children: [ContactCard()]),
     );
   }
 }
