@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/models/chat_model.dart';
 
 class ButtonCard extends StatelessWidget {
-  const ButtonCard({super.key, required this.contacts});
-  final ChatModel contacts;
+  const ButtonCard({super.key, required this.title, required this.icon});
+  final String title;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -11,17 +11,16 @@ class ButtonCard extends StatelessWidget {
       onTap: () {},
       child: ListTile(
         title: Text(
-          contacts.name!,
+          title,
           style: const TextStyle(
             fontWeight: FontWeight.w600,
           ),
         ),
-        subtitle: Text(contacts.status!),
         leading: CircleAvatar(
           radius: 22,
-          backgroundColor: Colors.grey.shade400,
-          child: const Icon(
-            Icons.person,
+          backgroundColor: Colors.teal,
+          child: Icon(
+            icon,
             size: 30,
             color: Colors.white,
           ),
