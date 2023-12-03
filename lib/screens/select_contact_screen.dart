@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/custom_ui/contact_card.dart';
+import 'package:whatsapp/models/chat_model.dart';
 
 class SelectContactScreen extends StatefulWidget {
   const SelectContactScreen({super.key});
@@ -11,6 +12,24 @@ class SelectContactScreen extends StatefulWidget {
 class _SelectContactScreenState extends State<SelectContactScreen> {
   @override
   Widget build(BuildContext context) {
+    List<ChatModel> contacts = [
+      ChatModel(
+        name: "ShadowNet",
+        status: "A full stack flutter developer",
+      ),
+      ChatModel(
+        name: "Ostrich Farmer",
+        status: "A full stack web developer",
+      ),
+      ChatModel(
+        name: "John Doe",
+        status: "A flutter mobile developer",
+      ),
+      ChatModel(
+        name: "Jane Doe",
+        status: "A cloud architect developer",
+      ),
+    ];
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
