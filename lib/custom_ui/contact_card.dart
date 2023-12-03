@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/models/chat_model.dart';
 
 class ContactCard extends StatelessWidget {
-  const ContactCard({super.key});
+  const ContactCard({super.key, required this.contacts});
+  final ChatModel contacts;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
       child: ListTile(
-        title: const Text(
-          "Ostrich Farmer",
-          style: TextStyle(
+        title: Text(
+          contacts.name!,
+          style: const TextStyle(
             fontWeight: FontWeight.w600,
           ),
         ),
-        subtitle: const Text("A flutter mobile developer"),
+        subtitle: Text(contacts.status!),
         leading: CircleAvatar(
           radius: 22,
           backgroundColor: Colors.grey.shade400,

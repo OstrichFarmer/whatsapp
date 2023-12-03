@@ -29,6 +29,14 @@ class _SelectContactScreenState extends State<SelectContactScreen> {
         name: "Jane Doe",
         status: "A cloud architect developer",
       ),
+      ChatModel(
+        name: "Joan",
+        status: "A Devops engineer",
+      ),
+      ChatModel(
+        name: "James",
+        status: "A cloud architect developer",
+      ),
     ];
     return Scaffold(
       appBar: AppBar(
@@ -81,9 +89,11 @@ class _SelectContactScreenState extends State<SelectContactScreen> {
         ],
       ),
       body: ListView.builder(
-          itemCount: 15,
+          itemCount: contacts.length,
           itemBuilder: (context, index) {
-            return const ContactCard();
+            return ContactCard(
+              contacts: contacts[index],
+            );
           }),
     );
   }
