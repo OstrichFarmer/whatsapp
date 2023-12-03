@@ -56,7 +56,7 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
                   backgroundColor: Colors.grey,
                   radius: 20,
                   child: Icon(
-                    widget.chatModel.isGroup ? Icons.group : Icons.person,
+                    widget.chatModel.isGroup! ? Icons.group : Icons.person,
                     color: Colors.white,
                     size: 35,
                   ),
@@ -71,7 +71,7 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.chatModel.name,
+                      widget.chatModel.name!,
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,

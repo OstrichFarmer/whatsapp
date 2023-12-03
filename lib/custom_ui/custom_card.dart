@@ -26,14 +26,14 @@ class CustomCard extends StatelessWidget {
               radius: 25,
               backgroundColor: Colors.grey,
               child: Icon(
-                chatModel.isGroup ? Icons.group : Icons.person,
+                chatModel.isGroup! ? Icons.group : Icons.person,
                 color: Colors.white,
                 size: 35,
               ),
             ),
-            trailing: Text(chatModel.time),
+            trailing: Text(chatModel.time!),
             title: Text(
-              chatModel.name,
+              chatModel.name!,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -45,7 +45,7 @@ class CustomCard extends StatelessWidget {
                 const SizedBox(
                   width: 5,
                 ),
-                Text(chatModel.currentMessage),
+                Text(chatModel.currentMessage!),
               ],
             ),
           ),

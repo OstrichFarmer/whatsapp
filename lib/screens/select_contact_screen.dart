@@ -61,7 +61,11 @@ class _SelectContactScreenState extends State<SelectContactScreen> {
           ),
         ],
       ),
-      body: ListView(children: [ContactCard()]),
+      body: ListView.builder(
+          itemCount: 15,
+          itemBuilder: (context, index) {
+            return const ContactCard();
+          }),
     );
   }
 }
