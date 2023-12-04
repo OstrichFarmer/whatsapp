@@ -69,26 +69,42 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
           ),
         ],
       ),
-      body: ListView.builder(
-          itemCount: contacts.length,
-          itemBuilder: (context, index) {
-            return ContactCard(
-              ontap: () {
-                if (contacts[index].selected == false) {
-                  setState(() {
-                    contacts[index].selected = true;
-                    groups.add(contacts[index]);
-                  });
-                } else {
-                  setState(() {
-                    contacts[index].selected = false;
-                    groups.remove(contacts[index]);
-                  });
-                }
-              },
-              contacts: contacts[index],
-            );
-          }),
+      body: Stack(
+        children: [
+          ListView.builder(
+              itemCount: contacts.length,
+              itemBuilder: (context, index) {
+                return ContactCard(
+                  ontap: () {
+                    if (contacts[index].selected == false) {
+                      setState(() {
+                        contacts[index].selected = true;
+                        groups.add(contacts[index]);
+                      });
+                    } else {
+                      setState(() {
+                        contacts[index].selected = false;
+                        groups.remove(contacts[index]);
+                      });
+                    }
+                  },
+                  contacts: contacts[index],
+                );
+              }),
+          Column(
+            children: [
+              Container(
+                color: Colors.white,
+                height: 75,
+                child: ListView.builder(itemBuilder: (context, index) {}),
+              ),
+              Divider(
+                thickness: 1,
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }
