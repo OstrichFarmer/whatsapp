@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/custom_ui/button_card.dart';
 import 'package:whatsapp/custom_ui/contact_card.dart';
 import 'package:whatsapp/models/chat_model.dart';
 
@@ -89,10 +90,16 @@ class _SelectContactScreenState extends State<SelectContactScreen> {
         ],
       ),
       body: ListView.builder(
-          itemCount: contacts.length,
+          itemCount: contacts.length + 2,
           itemBuilder: (context, index) {
+            if (index == 0) {
+              return const ButtonCard(title: "New group", icon: Icons.group);
+            } else if (index == 1) {
+              return const ButtonCard(
+                  title: "New contact", icon: Icons.person_add);
+            }
             return ContactCard(
-              contacts: contacts[index],
+              contacts: contacts[index - 2],
             );
           }),
     );
