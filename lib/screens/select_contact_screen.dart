@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/custom_ui/button_card.dart';
 import 'package:whatsapp/custom_ui/contact_card.dart';
 import 'package:whatsapp/models/chat_model.dart';
+import 'package:whatsapp/screens/create_group.dart';
 
 class SelectContactScreen extends StatefulWidget {
   const SelectContactScreen({super.key});
@@ -93,10 +94,19 @@ class _SelectContactScreenState extends State<SelectContactScreen> {
           itemCount: contacts.length + 2,
           itemBuilder: (context, index) {
             if (index == 0) {
-              return const ButtonCard(title: "New group", icon: Icons.group);
+              return ButtonCard(
+                ontap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (builder) => const CreateGroupScreen()));
+                },
+                title: "New group",
+                icon: Icons.group,
+              );
             } else if (index == 1) {
-              return const ButtonCard(
-                  title: "New contact", icon: Icons.person_add);
+              return ButtonCard(
+                  ontap: () {}, title: "New contact", icon: Icons.person_add);
             }
             return ContactCard(
               contacts: contacts[index - 2],

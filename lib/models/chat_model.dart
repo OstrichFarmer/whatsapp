@@ -7,6 +7,7 @@ class ChatModel {
   final String? time;
   final IconData? icon;
   final String? status;
+  bool selected = false; // Not nullable
 
   ChatModel({
     this.name,
@@ -15,5 +16,6 @@ class ChatModel {
     this.time,
     this.icon,
     this.status,
+    this.selected = false, // Set a default value
   });
 }

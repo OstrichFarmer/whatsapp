@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
 class ButtonCard extends StatelessWidget {
-  const ButtonCard({super.key, required this.title, required this.icon});
+  const ButtonCard(
+      {super.key,
+      required this.title,
+      required this.icon,
+      required this.ontap});
   final String title;
   final IconData icon;
+  final Function() ontap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: ontap,
       child: ListTile(
         title: Text(
           title,
