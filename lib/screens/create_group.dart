@@ -72,44 +72,63 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
       body: Stack(
         children: [
           ListView.builder(
-              itemCount: contacts.length,
+              itemCount: contacts.length + 1,
               itemBuilder: (context, index) {
+                if (index == 0) {
+                  return SizedBox(
+                    height: groups.isNotEmpty ? 90 : 5,
+                  );
+                }
                 return ContactCard(
                   ontap: () {
-                    if (contacts[index].selected == false) {
+                    if (contacts[index - 1].selected == false) {
                       setState(() {
-                        contacts[index].selected = true;
-                        groups.add(contacts[index]);
+                        contacts[index - 1].selected = true;
+                        groups.add(contacts[index - 1]);
                       });
                     } else {
                       setState(() {
-                        contacts[index].selected = false;
-                        groups.remove(contacts[index]);
+                        contacts[index - 1].selected = false;
+                        groups.remove(contacts[index - 1]);
                       });
                     }
                   },
-                  contacts: contacts[index],
+                  contacts: contacts[index - 1],
                 );
               }),
-          Column(
-            children: [
-              Container(
-                color: Colors.white,
-                height: 75,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: contacts.length,
-                    itemBuilder: (context, index) {
-                      return ContactAvatar(
-                        contacts: contacts[index],
-                      );
-                    }),
-              ),
-              const Divider(
-                thickness: 1,
-              )
-            ],
-          )
+          groups.isNotEmpty
+              ? Column(
+                  children: [
+                    Container(
+                      color: Colors.white,
+                      height: 75,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: contacts.length,
+                          itemBuilder: (context, index) {
+                            if (contacts[index].selected == true) {
+                              return InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    contacts[index].selected = false;
+                                    groups.remove(contacts[index]);
+                                  });
+                                },
+                                child: ContactAvatar(
+                                  contacts: contacts[index],
+                                ),
+                              );
+                            } else {
+                              return const SizedBox();
+                            }
+                          }),
+                    ),
+                    const Divider(
+                      thickness: 1,
+                    )
+                  ],
+                )
+              : const SizedBox(),
         ],
       ),
     );
