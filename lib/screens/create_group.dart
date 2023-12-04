@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/custom_ui/button_card.dart';
 import 'package:whatsapp/custom_ui/contact_avatar.dart';
 import 'package:whatsapp/custom_ui/contact_card.dart';
 import 'package:whatsapp/models/chat_model.dart';
@@ -106,7 +105,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                       );
                     }),
               ),
-              Divider(
+              const Divider(
                 thickness: 1,
               )
             ],
