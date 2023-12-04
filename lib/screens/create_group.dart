@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/custom_ui/button_card.dart';
+import 'package:whatsapp/custom_ui/contact_avatar.dart';
 import 'package:whatsapp/custom_ui/contact_card.dart';
 import 'package:whatsapp/models/chat_model.dart';
 
@@ -96,7 +97,14 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
               Container(
                 color: Colors.white,
                 height: 75,
-                child: ListView.builder(itemBuilder: (context, index) {}),
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: contacts.length,
+                    itemBuilder: (context, index) {
+                      return ContactAvatar(
+                        contacts: contacts[index],
+                      );
+                    }),
               ),
               Divider(
                 thickness: 1,
