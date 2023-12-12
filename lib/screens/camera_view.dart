@@ -5,6 +5,27 @@ class CameraViewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.crop_rotate),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.emoji_emotions_outlined),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.edit),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.title),
+          ),
+        ],
+      ),
+    );
   }
 }
