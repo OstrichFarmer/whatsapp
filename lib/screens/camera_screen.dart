@@ -2,6 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:whatsapp/screens/camera_view.dart';
 
 List<CameraDescription>? cameras;
 
@@ -64,7 +65,9 @@ class _CameraScreenState extends State<CameraScreen> {
                             size: 29,
                           )),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            takePhoto(context);
+                          },
                           icon: const Icon(
                             Icons.panorama_fish_eye,
                             color: Colors.white,
@@ -92,9 +95,13 @@ class _CameraScreenState extends State<CameraScreen> {
     );
   }
 
-  void takePhoto() async {
+  void takePhoto(BuildContext context) async {
+    final navigator = Navigator.of(context);
     final path =
         join((await getTemporaryDirectory()).path, "${DateTime.now()}.png");
     await _cameraController!.takePicture();
+
+    navigator.push(
+        MaterialPageRoute(builder: (builder) => const CameraViewScreen()));
   }
 }
