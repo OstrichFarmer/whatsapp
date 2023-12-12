@@ -1,5 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 List<CameraDescription>? cameras;
 
@@ -22,9 +24,16 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _cameraController!.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
+        fit: StackFit.expand,
         children: [
           FutureBuilder(
               future: cameravalue,
@@ -81,5 +90,11 @@ class _CameraScreenState extends State<CameraScreen> {
         ],
       ),
     );
+  }
+
+  void takePhoto() async {
+    final path =
+        join((await getTemporaryDirectory()).path, "${DateTime.now()}.png");
+    await _cameraController!.takePicture();
   }
 }
