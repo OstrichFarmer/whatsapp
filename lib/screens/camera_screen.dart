@@ -1,9 +1,5 @@
-import 'dart:io';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:whatsapp/screens/camera_view.dart';
 
 List<CameraDescription>? cameras;
@@ -99,8 +95,8 @@ class _CameraScreenState extends State<CameraScreen> {
 
   void takePhoto(BuildContext context) async {
     final navigator = Navigator.of(context);
-    final path =
-        join((await getTemporaryDirectory()).path, "${DateTime.now()}.png");
+    // final path =
+    //     join((await getTemporaryDirectory()).path, "${DateTime.now()}.png");
     await _cameraController!
         .takePicture()
         .then((path) => navigator.push(MaterialPageRoute(
