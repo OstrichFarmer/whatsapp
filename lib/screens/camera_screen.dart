@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
@@ -99,9 +101,11 @@ class _CameraScreenState extends State<CameraScreen> {
     final navigator = Navigator.of(context);
     final path =
         join((await getTemporaryDirectory()).path, "${DateTime.now()}.png");
-    await _cameraController!.takePicture();
-
-    navigator.push(
-        MaterialPageRoute(builder: (builder) => const CameraViewScreen()));
+    await _cameraController!
+        .takePicture()
+        .then((path) => navigator.push(MaterialPageRoute(
+            builder: (builder) => CameraViewScreen(
+                  path: path.path,
+                ))));
   }
 }
