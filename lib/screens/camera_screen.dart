@@ -14,6 +14,7 @@ class CameraScreen extends StatefulWidget {
 class _CameraScreenState extends State<CameraScreen> {
   CameraController? _cameraController;
   Future<void>? cameravalue;
+  bool isRecording = false;
 
   @override
   void initState() {
@@ -55,6 +56,7 @@ class _CameraScreenState extends State<CameraScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       IconButton(
                           onPressed: () {},
@@ -63,15 +65,36 @@ class _CameraScreenState extends State<CameraScreen> {
                             color: Colors.white,
                             size: 29,
                           )),
-                      IconButton(
-                          onPressed: () {
+                      GestureDetector(
+                        onLongPress: () async {
+                          await _cameraController!.startVideoRecording();
+                          setState(() {
+                            isRecording = true;
+                          });
+                        },
+                        onLongPressUp: () async {
+                          await _cameraController!.stopVideoRecording();
+                          setState(() {
+                            isRecording = false;
+                          });
+                        },
+                        onTap: () {
+                          if (!isRecording) {
                             takePhoto(context);
-                          },
-                          icon: const Icon(
-                            Icons.panorama_fish_eye,
-                            color: Colors.white,
-                            size: 70,
-                          )),
+                          }
+                        },
+                        child: isRecording
+                            ? const Icon(
+                                Icons.radio_button_on,
+                                color: Colors.red,
+                                size: 80,
+                              )
+                            : const Icon(
+                                Icons.panorama_fish_eye,
+                                color: Colors.white,
+                                size: 70,
+                              ),
+                      ),
                       IconButton(
                           onPressed: () {},
                           icon: const Icon(
