@@ -20,24 +20,55 @@ class CameraViewScreen extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.edit),
+            icon: const Icon(Icons.title),
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.title),
+            icon: const Icon(Icons.edit),
           ),
         ],
       ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Stack(children: [
-          Container(
+      body: Stack(
+        children: [
+          SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Image.file(File(path)),
+            height: double.infinity,
+            child: Image.file(
+              File(path),
+              fit: BoxFit.cover,
+            ),
           ),
-        ]),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              color: Colors.black38,
+              child: TextFormField(
+                style: const TextStyle(color: Colors.white),
+                maxLines: 6,
+                minLines: 1,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.add_photo_alternate,
+                    color: Colors.white,
+                  ),
+                  suffixIcon: CircleAvatar(
+                    backgroundColor: Colors.teal,
+                    radius: 26,
+                    child: Icon(
+                      Icons.check,
+                      color: Colors.white,
+                      size: 27,
+                    ),
+                  ),
+                  border: InputBorder.none,
+                  hintText: "Add caption ....",
+                  hintStyle: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

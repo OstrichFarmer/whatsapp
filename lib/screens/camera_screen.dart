@@ -54,6 +54,7 @@ class _CameraScreenState extends State<CameraScreen> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisSize: MainAxisSize.max,
                     children: [
                       IconButton(
                           onPressed: () {},
