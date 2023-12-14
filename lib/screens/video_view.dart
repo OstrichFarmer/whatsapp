@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoViewScreen extends StatefulWidget {
   const VideoViewScreen({super.key, required this.path});
@@ -11,6 +12,18 @@ class VideoViewScreen extends StatefulWidget {
 }
 
 class _VideoViewScreenState extends State<VideoViewScreen> {
+  late VideoPlayerController _videoController;
+
+  @override
+  void initState() {
+    super.initState();
+    _videoController = VideoPlayerController.file(File(widget.path))
+      ..initialize().then((_) {
+        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+        setState(() {});
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,10 +52,12 @@ class _VideoViewScreenState extends State<VideoViewScreen> {
           SizedBox(
             width: MediaQuery.of(context).size.width,
             height: double.infinity,
-            child: Image.file(
-              File(widget.path),
-              fit: BoxFit.cover,
-            ),
+            child: _videoController.value.isInitialized
+                ? AspectRatio(
+                    aspectRatio: _videoController.value.aspectRatio,
+                    child: VideoPlayer(_videoController),
+                  )
+                : Container(),
           ),
           Align(
             alignment: Alignment.bottomCenter,

@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/screens/camera_view.dart';
+import 'package:whatsapp/screens/video_view.dart';
 
 List<CameraDescription>? cameras;
 
@@ -73,7 +74,11 @@ class _CameraScreenState extends State<CameraScreen> {
                           });
                         },
                         onLongPressUp: () async {
-                          await _cameraController!.stopVideoRecording();
+                          final navigator = Navigator.of(context);
+                          await _cameraController!.stopVideoRecording().then(
+                              (videoPath) => navigator.push(MaterialPageRoute(
+                                  builder: (builder) =>
+                                      VideoViewScreen(path: videoPath.path))));
                           setState(() {
                             isRecording = false;
                           });
