@@ -88,6 +88,29 @@ class _VideoViewScreenState extends State<VideoViewScreen> {
                 ),
               ),
             ),
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  _videoController.value.isPlaying
+                      ? _videoController.pause()
+                      : _videoController.play();
+                });
+              },
+              child: CircleAvatar(
+                radius: 33,
+                backgroundColor: Colors.black38,
+                child: Icon(
+                  _videoController.value.isPlaying
+                      ? Icons.pause
+                      : Icons.play_arrow,
+                  color: Colors.white,
+                  size: 50,
+                ),
+              ),
+            ),
           )
         ],
       ),
