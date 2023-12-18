@@ -16,6 +16,7 @@ class _CameraScreenState extends State<CameraScreen> {
   CameraController? _cameraController;
   Future<void>? cameravalue;
   bool isRecording = false;
+  bool flash = false;
 
   @override
   void initState() {
@@ -60,9 +61,18 @@ class _CameraScreenState extends State<CameraScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.flash_off,
+                          onPressed: () {
+                            setState(() {
+                              flash = !flash;
+                            });
+                            flash
+                                ? _cameraController!
+                                    .setFlashMode(FlashMode.torch)
+                                : _cameraController!
+                                    .setFlashMode(FlashMode.off);
+                          },
+                          icon: Icon(
+                            flash ? Icons.flash_on : Icons.flash_off,
                             color: Colors.white,
                             size: 29,
                           )),
