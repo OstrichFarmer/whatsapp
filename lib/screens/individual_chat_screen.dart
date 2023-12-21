@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:whatsapp/custom_ui/one_message_card.dart';
+import 'package:whatsapp/custom_ui/own_message_card.dart';
+import 'package:whatsapp/custom_ui/reply_card.dart';
 import 'package:whatsapp/models/chat_model.dart';
 
 class IndividualChatScreen extends StatefulWidget {
@@ -153,7 +154,10 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
                 child: Stack(
                   children: [
                     ListView(
-                      children: [OwnMessageCard()],
+                      children: const [
+                        OwnMessageCard(),
+                        ReplyCard(),
+                      ],
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
