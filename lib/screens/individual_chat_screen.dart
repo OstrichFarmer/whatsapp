@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:whatsapp/custom_ui/one_message_card.dart';
 import 'package:whatsapp/models/chat_model.dart';
 
 class IndividualChatScreen extends StatefulWidget {
@@ -151,7 +152,9 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
                 height: MediaQuery.of(context).size.height,
                 child: Stack(
                   children: [
-                    ListView(),
+                    ListView(
+                      children: [OwnMessageCard()],
+                    ),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Column(
