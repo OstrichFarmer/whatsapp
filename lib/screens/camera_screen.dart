@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/screens/camera_view.dart';
@@ -17,6 +19,8 @@ class _CameraScreenState extends State<CameraScreen> {
   Future<void>? cameravalue;
   bool isRecording = false;
   bool flash = false;
+  bool isCameraFront = true;
+  double transform = 0;
 
   @override
   void initState() {
@@ -110,13 +114,26 @@ class _CameraScreenState extends State<CameraScreen> {
                                 size: 70,
                               ),
                       ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.flip_camera_ios,
-                            color: Colors.white,
-                            size: 29,
-                          )),
+                      Transform.rotate(
+                        angle: transform,
+                        child: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                transform = transform + pi;
+                                isCameraFront = !isCameraFront;
+                              });
+                              int cameraPosition = isCameraFront ? 1 : 0;
+                              _cameraController = CameraController(
+                                  cameras![cameraPosition],
+                                  ResolutionPreset.high);
+                              cameravalue = _cameraController!.initialize();
+                            },
+                            icon: const Icon(
+                              Icons.flip_camera_ios,
+                              color: Colors.white,
+                              size: 29,
+                            )),
+                      ),
                     ],
                   ),
                   const Text(
