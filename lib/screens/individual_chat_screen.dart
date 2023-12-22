@@ -153,11 +153,24 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
                 height: MediaQuery.of(context).size.height,
                 child: Stack(
                   children: [
-                    ListView(
-                      children: const [
-                        OwnMessageCard(),
-                        ReplyCard(),
-                      ],
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height - 145,
+                      child: ListView(
+                        children: const [
+                          OwnMessageCard(),
+                          ReplyCard(),
+                          OwnMessageCard(),
+                          ReplyCard(),
+                          OwnMessageCard(),
+                          ReplyCard(),
+                          OwnMessageCard(),
+                          ReplyCard(),
+                          OwnMessageCard(),
+                          ReplyCard(),
+                          OwnMessageCard(),
+                          ReplyCard(),
+                        ],
+                      ),
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
