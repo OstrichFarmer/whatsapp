@@ -23,7 +23,7 @@ class ButtonCard extends StatelessWidget {
         ),
         leading: CircleAvatar(
           radius: 22,
-          backgroundColor: Color(0XFF25D366),
+          backgroundColor: const Color(0XFF25D366),
           child: Icon(
             icon,
             size: 30,

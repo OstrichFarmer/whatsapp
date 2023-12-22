@@ -12,6 +12,7 @@ class OwnMessageCard extends StatelessWidget {
           maxWidth: MediaQuery.of(context).size.width - 45,
         ),
         child: const Card(
+          margin: EdgeInsets.only(right: 10, top: 10),
           color: Color(0XFFDCF8C6),
           child: Stack(
             children: [

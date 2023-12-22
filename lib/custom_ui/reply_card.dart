@@ -12,6 +12,7 @@ class ReplyCard extends StatelessWidget {
           maxWidth: MediaQuery.of(context).size.width - 45,
         ),
         child: const Card(
+          margin: EdgeInsets.only(left: 10, top: 10),
           child: Stack(
             children: [
               Padding(
