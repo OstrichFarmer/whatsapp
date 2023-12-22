@@ -19,11 +19,11 @@ class OwnMessageCard extends StatelessWidget {
                 padding: EdgeInsets.only(
                   left: 10,
                   bottom: 20,
-                  right: 90,
+                  right: 30,
                   top: 10,
                 ),
                 child: Text(
-                    "Heyd kjn jubjbkj2bkbflk2bnklbnlkenf;oj2pojpo2ejopfn2lofbuiob2kjvcb2iubwf2j4bfiubvewjkbfdsakjboiboubb"),
+                    "Heyd kjn jubjbkj2bkbflk2bnklbnlkenf;oj2pojpo2ejol fdslknvisdhbjkvbsdjibviusdbiuvbuydsbvuhsabviucbaiucbciuabiubaviucabdsiugbiubdziuvbiusdbiuvsbdvipfn2lofbuiob2kjvcb2iubwf2j4bfiubvewjkbfdsakjboiboubb"),
               ),
               Positioned(
                 right: 3,
