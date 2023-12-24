@@ -5,18 +5,60 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/custom_ui/own_message_card.dart';
 import 'package:whatsapp/custom_ui/reply_card.dart';
 import 'package:whatsapp/models/chat_model.dart';
+import 'package:socket_io_client/socket_io_client.dart';
 
 class IndividualChatScreen extends StatefulWidget {
-  const IndividualChatScreen({super.key, required this.chatModel});
+  const IndividualChatScreen({
+    super.key,
+    required this.chatModel,
+  });
   final ChatModel chatModel;
+
   @override
   State<IndividualChatScreen> createState() => _IndividualChatScreenState();
 }
 
-bool showEmoji = false;
-final _textEditingController = TextEditingController();
-
 class _IndividualChatScreenState extends State<IndividualChatScreen> {
+  bool showEmoji = false;
+  final _textEditingController = TextEditingController();
+  Socket? socket;
+  @override
+  void initState() {
+    connect();
+    super.initState();
+  }
+
+  void connect() {
+    socket = io(
+        'http://192.168.0.190:3000',
+        OptionBuilder()
+            .setTransports(['websocket']) // for Flutter or Dart VM
+            .disableAutoConnect() // disable auto-connection
+            .setExtraHeaders({'foo': 'bar'}) // optional
+            .build());
+
+    socket!.connect();
+    socket!.onConnect((_) {
+      debugPrint(socket!.connected.toString());
+      debugPrint('connect');
+      socket!.emitWithAck('msg', 'init', ack: (data) {
+        debugPrint('ack $data');
+        if (data != null) {
+          debugPrint('from server $data');
+        } else {
+          debugPrint("Null");
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    socket!.disconnect();
+    socket!.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
